@@ -1,2 +1,17 @@
 *.pyc
 pyethereum/*
+build/
+dist/
+ethereum/
+ethereum.egg-info
+fixtures/
+tools/
+
+dev_requirements.txt
+Makefile
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+tox.ini
+
