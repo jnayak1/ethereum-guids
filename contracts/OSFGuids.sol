@@ -20,10 +20,17 @@ contract OSFGuids {
             throw;
         _;
     }
+
+    modifier doesNotExist(bytes5 guid) {
+        if(!guidMap[guid].value == bytes5(0x0))
+            throw;
+        _;
+    }
     
-    function addGuid(bytes32 guid) 
-        isCreator
+    function addGuid(bytes5 guid, bytes32 fileHash) 
+        isCreator, doesNotExist(guid)
     {
-        
+        guidMap[guid].updates = 0;
+        guidMap[guid].value = fileHash;
     }
 }
