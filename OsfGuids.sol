@@ -22,13 +22,13 @@ contract OSFGuids {
     }
 
     modifier hashDoesNotExist(bytes5 guid) {
-        if(!(guidMap[guid].value == bytes5(0x0)))
+        if(!(guidMap[guid].value[0] == bytes5(0x0)))
             throw;
         _;
     }
 
     modifier hashExists(bytes5 guid) {
-        if(!(guidMap[guid].value == bytes5(0x0)))
+        if((guidMap[guid].value[0] == bytes5(0x0)))
             throw;
         _;
     }
@@ -41,7 +41,7 @@ contract OSFGuids {
     }
 
     function updateGuid(bytes5 guid, bytes32 fileHash)
-        isCreator hashExists
+        isCreator hashExists(guid)
     {
         uint newUpdates = guidMap[guid].updates + 1;
         guidMap[guid].updates = newUpdates;
