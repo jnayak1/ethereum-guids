@@ -9,7 +9,7 @@ contract OSFGuids {
         bytes32 value;
     }
     
-    mapping(bytes5 => Hash) guidMap;
+    mapping(bytes5 => Hash) public guidMap;
     
     function OSFGuids(){
         creator = msg.sender;
@@ -22,13 +22,13 @@ contract OSFGuids {
     }
 
     modifier doesNotExist(bytes5 guid) {
-        if(!guidMap[guid].value == bytes5(0x0))
+        if(!(guidMap[guid].value == bytes5(0x0)))
             throw;
         _;
     }
     
     function addGuid(bytes5 guid, bytes32 fileHash) 
-        isCreator, doesNotExist(guid)
+        isCreator doesNotExist(guid)
     {
         guidMap[guid].updates = 0;
         guidMap[guid].value = fileHash;

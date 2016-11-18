@@ -55,6 +55,7 @@ def hash_file(filename):
 
     md5 = hashlib.md5()
     sha1 = hashlib.sha1()
+    sha256 = hashlib.sha256()
 
     with open('{}/{}'.format(UPLOAD_FOLDER,filename), 'rb') as f:
         while True:
@@ -63,6 +64,9 @@ def hash_file(filename):
                 break
             md5.update(data)
             sha1.update(data)
+            sha256.update(data)
 
     print("MD5: {0}".format(md5.hexdigest()))
     print("SHA1: {0}".format(sha1.hexdigest()))
+    print("SHA256: {0}".format(sha1.hexdigest()))
+
