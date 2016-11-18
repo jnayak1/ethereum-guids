@@ -7,3 +7,4 @@ setup.cfg
 setup.py
 tox.ini
 files/
+pw_file.txt

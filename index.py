@@ -1,8 +1,14 @@
 import os
+
 from flask import Flask, send_from_directory
 from flask import Flask, request, redirect, url_for
 from werkzeug.utils import secure_filename
+
 import hashlib
+
+from ethjsonrpc import EthJsonRpc
+c = EthJsonRpc('127.0.0.1', 8545)
+
 
 app = Flask(__name__)
 
