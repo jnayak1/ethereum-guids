@@ -1,11 +1,4 @@
 *.pyc
-pyethereum/*
-build/
-dist/
-ethereum/
-ethereum.egg-info
-fixtures/
-tools/
 
 dev_requirements.txt
 Makefile
